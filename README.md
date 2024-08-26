@@ -46,14 +46,16 @@ How to use it?
     
     
     fp = r"https://raw.githubusercontent.com/romainsacchi/exercise-car-europe/main/datapackage.json"
-    cars_scenario = Package(fp)
+    bread = Package(fp)
+
+    external_scenarios = [{"scenario": "SPS", "data": bread},]
     
     bw.projects.set_current("your_bw_project")
     
     ndb = NewDatabase(
             scenarios = [
-                {"model":"image", "pathway":"SSP2-Base", "year":2050,},
-                {"model":"image", "pathway":"SSP2-RCP26", "year":2030,},
+                {"model":"image", "pathway":"SSP2-Base", "year":2050, "external scenarios": external_scenarios}},
+                {"model":"image", "pathway":"SSP2-RCP26", "year":2030, "external scenarios": external_scenarios}},
             ],        
             source_db="ecoinvent 3.9.1 cutoff",
             source_version="3.9",
@@ -63,6 +65,6 @@ How to use it?
             ] 
         )
     
-    ndb.update_external_scenario()
+    ndb.update("external") # or ndb.update() to include the IAM scenario and the external one
 ```
 
