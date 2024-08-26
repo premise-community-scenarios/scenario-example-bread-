@@ -60,9 +60,6 @@ How to use it?
             source_db="ecoinvent 3.9.1 cutoff",
             source_version="3.9",
             key='xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-            external_scenarios=[
-                cars_scenario, # <-- list datapackage objects here
-            ] 
         )
     
     ndb.update("external") # or ndb.update() to include the IAM scenario and the external one
